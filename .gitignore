@@ -6,3 +6,9 @@ murfi-rt-PyProject/scripts/murfi2.1.sif
 
 # Ignore a directory
 build/
+
+# Ignore all subject folders in murfi-rt-PyProject/subjects/
+murfi-rt-PyProject/subjects/*/
+
+# Except the 'emplate' folder
+!murfi-rt-PyProject/subjects/template/
