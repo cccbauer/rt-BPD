@@ -1,0 +1,8 @@
+# Ignore the large SIF file
+murfi-rt-PyProject/scripts/murfi2.1.sif
+
+# Ignore all .log files
+*.log
+
+# Ignore a directory
+build/
