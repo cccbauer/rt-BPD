@@ -63,22 +63,12 @@ if num_cmd_line_arguments >= 4:
 else:
     input_feedback = ['', 'Feedback', 'No Feedback']
 
-# cmd line arg 5 will be session nf1 or nf2 
+# cmd line arg 5 will be 15min vs 30min
 if num_cmd_line_arguments >= 4:
-    if sys.argv[4] == 'ses-nf1':
-        input_ses = ['loc','ses-nf1', 'ses-nf2']
+    if sys.argv[4] == '15min':
+        input_feedback_condition = ['15min', '30min']
     else:
-        input_ses = ['ses-nf1', 'ses-nf2','loc']
-else:
-    input_ses = ['', 'loc', 'ses-nf1', 'ses-nf2']
-
-
-# cmd line arg 6 will be 15min vs 30min
-if num_cmd_line_arguments >= 4:
-    if sys.argv[5] == '15min':
-        input_feedback_condition = ['15min', '15min']
-    else:
-        input_feedback_condition = ['15min', '15min']
+        input_feedback_condition = ['30min', '15min']
 else:
     input_feedback_condition = ['', '15min', '30min']
 
@@ -94,23 +84,22 @@ else:
 
 # Store info about the experiment 
 expName = 'DMN_BallTask'  # from the Builder filename that created thi s script
-expInfo = {'participant':input_participant, 'ses_nf':input_ses, 'run':input_run, 'anchor': input_anchor, 'feedback_on': input_feedback, 
+expInfo = {'participant':input_participant, 'run':input_run, 'anchor': input_anchor, 'feedback_on': input_feedback, 
            'feedback_condition': input_feedback_condition} 
 
 
-murfi_FAKE=True
+murfi_FAKE=False
 
 # Show dialogue box until all participant info has been entered
 while expInfo['feedback_on'] not in ['Feedback', 'No Feedback']:
     expInfo['feedback_on'] =  input_feedback
     dlg = gui.DlgFromDict(dictionary=expInfo, title=expName, 
         labels = {'participant': 'Participant ID (rtbpd###)', 
-                  'ses_nf':'ses_nf#',
-                  'run': 'run0#', 
+                  'run': 'Run', 
                   'feedback_on': 'Display Feedback?',
                   'anchor': 'Participant Anchor',
                   'feedback_condition': 'Feedback Condition'},
-        order = ['participant', 'ses_nf','run', 'feedback_on', 'anchor'])
+        order = ['participant', 'run', 'feedback_on', 'anchor'])
     if dlg.OK == False: 
         core.quit()  # user pressed cancel
 
@@ -161,7 +150,6 @@ if not os.path.exists(f"data/{expInfo['participant']}"):
 # output file string (different depending on if feedback is being offered)
 if expInfo['feedback_on']=='Feedback':
     filename = f"data/{expInfo['participant']}" + os.path.sep + '%s_DMN_Feedback_%s' %(expInfo['participant'],expInfo['run'])
-    print(filename)
 elif expInfo['feedback_on']=='No Feedback':
     filename = f"data/{expInfo['participant']}" + os.path.sep + '%s_DMN_No_Feedback_%s' %(expInfo['participant'],expInfo['run'])
 
@@ -1038,8 +1026,7 @@ else:
 
 # Convert csv output to BIDS-format tsv
 convert_balltask_csv_to_bids(infile = f'{filename}_roi_outputs.csv')
-infile_test=f'{filename}_roi_outputs.csv'
-print(infile_test)
+
 # display ending text and close window
 thank_you_end_run_text.draw()
 win.flip()
@@ -1064,7 +1051,6 @@ else:
     next_run = int(expInfo['run']) + 1
     next_feedback='Feedback'
 
-next_ses=expInfo['ses_nf']
 next_participant=expInfo['participant']
 anchor = expInfo['anchor']
 next_feedback_condition = expInfo['feedback_condition']

@@ -47,6 +47,7 @@ def convert_balltask_csv_to_bids(infile):
     outfile_stems = infile.split('_')
     path = outfile_stems[0].split('/')
     run_num = int(slider_outputs['run'][0])
+    ses_num = int(slider_outputs['ses_nf'][0])
     if str(slider_outputs['feedback_on'][0]) == 'Feedback':
         run_type = 'feedback'
     else:
@@ -60,6 +61,7 @@ def convert_balltask_csv_to_bids(infile):
             run_num=2
             
     # put together bids tsv filename
-    outfile = 'data/' + str(slider_outputs['id'][0]) +  '/sub-' + str(slider_outputs['id'][0]) + '_ses-nf_task-' + run_type + '_run-' + "{:02d}".format(run_num) + '.tsv'
+    outfile = 'data/' + str(slider_outputs['id'][0]) +  '/' + str(slider_outputs['id'][0]) + '_' + ses_num +'_task-' + run_type + '_run-' + "{:02d}".format(run_num) + '.tsv'
+    print(outfile)
     out_df.to_csv(outfile, sep ='\t', index=False)
     return(out_df)

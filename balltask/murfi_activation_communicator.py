@@ -7,6 +7,7 @@ import re
 import random
 import time
 volumes_count=0
+
 class MurfiActivationCommunicator:
     
     def __init__(self, ip, port, num_trs, roi_names, exp_tr,fake):
@@ -18,6 +19,7 @@ class MurfiActivationCommunicator:
         self._fake = fake
         self._rois_fake= roi_names
         self._rois = {}
+        self._last_update_time_global = time.time()  # for fake data
         for roi_name in roi_names:
             self._rois[roi_name] = {
                 'last_tr': -1,
@@ -100,13 +102,38 @@ class MurfiActivationCommunicator:
         return self._rois[roi_name]['activation'][tr]
 
     def update(self):
-        for roi_name, roi in self._rois.items():
-            if roi['last_tr'] >= self._num_trs:
-                continue
+        # no simulation - real data
+        if not self._fake:
+            for roi_name, roi in self._rois.items():
+                if roi['last_tr'] >= self._num_trs:
+                    continue
 
-            act = self._ask_for_roi_activation(roi_name, roi['last_tr'] + 1)
-            #print(act)
-            while act == act:
-                roi['last_tr'] += 1
-                roi['activation'][roi['last_tr']] = act
                 act = self._ask_for_roi_activation(roi_name, roi['last_tr'] + 1)
+                #print(act)
+                while act == act:
+                    roi['last_tr'] += 1
+                    roi['activation'][roi['last_tr']] = act
+                    act = self._ask_for_roi_activation(roi_name, roi['last_tr'] + 1)
+        # simulated data
+        elif self._fake:
+            current_time = time.time()
+            # Check if the TR interval has elapsed
+            if current_time - self._last_update_time_global < self._exp_tr:
+                # Not enough time has passed; explicitly set the next activation for each ROI to NaN
+                for roi_name, roi in self._rois.items():
+                    if roi['last_tr'] < self._num_trs - 1:
+                        roi['activation'][roi['last_tr'] + 1] = float('nan')
+                        # print(
+                        #     f"Fake update: ROI {roi_name} (TR {roi['last_tr'] + 1}) set to NaN because TR hasn't passed")
+                return  # Exit update() without producing a new valid activation
+            else:
+                # Enough time has passed; update the global timer
+                self._last_update_time_global = current_time
+                # For each ROI, generate a simulated activation value and update the activation array
+                print("::::DEBUG MODE.RUNNING MURFI SIMULATOR::::")
+                for roi_name, roi in self._rois.items():
+                    if roi['last_tr'] < self._num_trs:
+                        simulated_value = random.gauss(0, 1)
+                        roi['last_tr'] += 1
+                        roi['activation'][roi['last_tr']] = simulated_value
+                        print(f"ROI: {roi_name}, TR: {roi['last_tr']}, Activation: {simulated_value}")
