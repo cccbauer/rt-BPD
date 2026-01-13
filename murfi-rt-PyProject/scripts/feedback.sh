@@ -465,6 +465,10 @@ then
     # Copy masks to participant's mask directory (in native/study_ref space for MURFI)
     cp ${dmn_thresh} ${subj_dir}/mask/dmn_native_rest.nii
     cp ${cen_thresh} ${subj_dir}/mask/cen_native_rest.nii
+    
+    # At the end of process_roi_masks, after creating masks:
+    cp ${dmn_thresh} ${subj_dir}/mask/dmn_rest_original.nii
+    cp ${cen_thresh} ${subj_dir}/mask/cen_rest_original.nii
 
     # OPTIONAL: Save masks in MNI space for archival/comparison
     if [ $ica_version == 'multi_run' ]; then
@@ -480,7 +484,6 @@ then
     fsleyes $examplefunc ${mni2example_func} ${dmn_thresh} -cm blue ${cen_thresh} -cm red
 
 fi
-
 
 # For registering masks in resting state space to 2vol space
 if [ ${step} = register ]
@@ -549,13 +552,20 @@ then
     # Make registration image for inspection
     slices $subj_dir/xfm/epi2reg/rest2studyref_brain ${latest_ref}_brain -o $subj_dir/qc/rest_warp_to_2vol_native_check.gif
 
-    # Register masks from rest space to study_ref space
+    # Register masks from ORIGINAL rest space to study_ref space
     for mask_name in {'dmn','cen'};
     do 
         echo "+ REGISTERING ${mask_name} TO study_ref" 
 
-        # Register mask from rest space to study_ref space
-        flirt -in $subj_dir/mask/${mask_name}_native_rest.nii \
+        # Check if original rest-space masks exist
+        if [ ! -f "$subj_dir/mask/${mask_name}_rest_original.nii" ]; then
+            echo "ERROR: Original rest-space mask not found: ${mask_name}_rest_original.nii"
+            echo "Please run process_roi_masks step first"
+            exit 1
+        fi
+
+        # Register mask from ORIGINAL rest space to study_ref space
+        flirt -in $subj_dir/mask/${mask_name}_rest_original.nii \
               -ref ${latest_ref}_brain \
               -out $subj_dir/mask/${mask_name}_temp \
               -init $subj_dir/xfm/epi2reg/rest2studyref.mat \
@@ -565,46 +575,35 @@ then
         fslmaths ${latest_ref}_brain_mask -ero -ero -ero -ero ${latest_ref}_brain_mask_ero4
 
         # Multiply registered mask by eroded study_ref brain mask
-        fslmaths $subj_dir/mask/${mask_name}_temp.nii.gz -mul ${latest_ref}_brain_mask_ero4 $subj_dir/mask/${mask_name}_final.nii.gz -odt short
+        fslmaths $subj_dir/mask/${mask_name}_temp.nii.gz -mul ${latest_ref}_brain_mask_ero4 $subj_dir/mask/${mask_name}_studyref.nii.gz -odt short
 
-        # Uncompress and finalize
-        if [ -f "$subj_dir/mask/${mask_name}_final.nii.gz" ]; then
-            gunzip -f $subj_dir/mask/${mask_name}_final.nii.gz
-            mv $subj_dir/mask/${mask_name}_final.nii $subj_dir/mask/${mask_name}.nii
-        elif [ -f "$subj_dir/mask/${mask_name}_temp.nii.gz" ]; then
-            gunzip -f $subj_dir/mask/${mask_name}_temp.nii.gz
-            fslmaths $subj_dir/mask/${mask_name}_temp.nii -mul ${latest_ref}_brain_mask_ero4 $subj_dir/mask/${mask_name}.nii -odt short
+        # Uncompress
+        if [ -f "$subj_dir/mask/${mask_name}_studyref.nii.gz" ]; then
+            gunzip -f $subj_dir/mask/${mask_name}_studyref.nii.gz
         fi
         
+        # Apply final brain mask cleanup
+        fslmaths ${latest_ref}_brain -bin ${latest_ref}_brain_bin
+        fslmaths $subj_dir/mask/${mask_name}_studyref.nii -mul ${latest_ref}_brain_bin $subj_dir/mask/${mask_name}_studyref.nii -odt short
+        
         # Report final voxel count
-        final_voxels=$(fslstats $subj_dir/mask/${mask_name}.nii -V | awk '{print $1}')
+        final_voxels=$(fslstats $subj_dir/mask/${mask_name}_studyref.nii -V | awk '{print $1}')
         echo "   Final ${mask_name} mask in study_ref space: ${final_voxels} voxels"
         
         # Clean up temporary files
         rm -f $subj_dir/mask/${mask_name}_temp.nii*
-        rm -f $subj_dir/mask/${mask_name}_final.nii*
     done
 
-    # Clean up erosion temp file
+    # Create final MURFI-ready masks (what MURFI actually uses)
+    echo "+ Creating final MURFI masks (cen.nii and dmn.nii)"
+    cp $subj_dir/mask/cen_studyref.nii $subj_dir/mask/cen.nii
+    cp $subj_dir/mask/dmn_studyref.nii $subj_dir/mask/dmn.nii
+    
+    echo "   Created mask/cen.nii ($(fslstats $subj_dir/mask/cen.nii -V | awk '{print $1}') voxels)"
+    echo "   Created mask/dmn.nii ($(fslstats $subj_dir/mask/dmn.nii -V | awk '{print $1}') voxels)"
+
+    # Clean up erosion and temp files
     rm -f ${latest_ref}_brain_mask_ero4.nii*
-
-    # FINAL CLEANUP: Multiply masks by binarized study_ref brain to ensure fully inside
-    echo "+ Final cleanup: ensuring all voxels are inside study_ref brain"
-    
-    # Create binarized brain mask from study_ref
-    fslmaths ${latest_ref}_brain -bin ${latest_ref}_brain_bin
-    
-    for mask_name in {'dmn','cen'};
-    do
-        # Multiply mask by binarized brain
-        fslmaths $subj_dir/mask/${mask_name}.nii -mul ${latest_ref}_brain_bin $subj_dir/mask/${mask_name}.nii -odt short
-        
-        # Report final voxel count after cleanup
-        final_voxels=$(fslstats $subj_dir/mask/${mask_name}.nii -V | awk '{print $1}')
-        echo "   ${mask_name} mask after brain cleanup: ${final_voxels} voxels"
-    done
-    
-    # Clean up temp brain bin file
     rm -f ${latest_ref}_brain_bin.nii*
 
     echo "+ INSPECT"
@@ -614,7 +613,6 @@ then
     fsleyes ${latest_ref}_brain $subj_dir/mask/cen.nii -cm red $subj_dir/mask/dmn.nii -cm blue
 
 fi
-
 
 if [ ${step} = cleanup ]
 then

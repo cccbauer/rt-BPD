@@ -13,6 +13,14 @@ murfi-rt-PyProject/subjects/*/
 !murfi-rt-PyProject/subjects/template/
 
 # Large neuroimaging files
-*.nii
-*.nii.gz
-murfi-rt-PyProject/scripts/img/
+# Large neuroimaging files (ignore processed/subject data, keep templates)
+murfi-rt-PyProject/subjects/*/rest/*.nii
+murfi-rt-PyProject/subjects/*/rest/*.nii.gz
+murfi-rt-PyProject/subjects/*/img/
+murfi-rt-PyProject/subjects/*/rest/rs_network.gica/
+murfi-rt-PyProject/subjects/*/rest/rs_network.ica/
+
+# Keep small template/example files
+!murfi-rt-PyProject/scripts/*.nii
+!murfi-rt-PyProject/subjects/template/**/*.nii
+
