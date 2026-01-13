@@ -1,0 +1,60 @@
+{
+    "timestamp": "20250813_124329",
+    "original_file": "../BVAnalyzer/export/sub-dmnelf006_task-feedback-run02.edf",
+    "original_n_channels": 32,
+    "ecg_removed": [
+        "ECG"
+    ],
+    "bad_channels": [
+        "TP9",
+        "Fp1"
+    ],
+    "bad_channel_method": "removed",
+    "final_n_channels": 29,
+    "qc_stats": {
+        "bad_channels": [
+            "TP9",
+            "Fp1"
+        ],
+        "good_channels": [
+            "Fp2",
+            "F3",
+            "F4",
+            "C3",
+            "C4",
+            "P3",
+            "P4",
+            "O1",
+            "O2",
+            "F7",
+            "F8",
+            "T7",
+            "T8",
+            "P7",
+            "P8",
+            "Fz",
+            "Cz",
+            "Pz",
+            "Oz",
+            "FC1",
+            "FC2",
+            "CP1",
+            "CP2",
+            "FC5",
+            "FC6",
+            "CP5",
+            "CP6",
+            "TP10",
+            "POz"
+        ],
+        "mean_snr": -5.259025824082875,
+        "bad_segments_ratio": 0.019573333333333335,
+        "variance_reduction": 6.805997773483796,
+        "bad_by_variance": [],
+        "bad_by_correlation": [],
+        "bad_by_powerline": [],
+        "ecg_channels_removed": [
+            "ECG"
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<HistoryInfoFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <HeaderFilename>C:\Users\whitf\Documents\GitHub\rt-BPD\analysis\BVAnalyzer\raw\sub-rtbpd003_ses-nf2_task_feedback_run-01_cleaned.xhdr</HeaderFilename>
+  <RawFilename>C:\Users\whitf\Documents\GitHub\rt-BPD\analysis\BVAnalyzer\raw\sub-rtbpd003_ses-nf2_task_feedback_run-01_cleaned.dat</RawFilename>
+  <AppendedFiles />
+  <Sequence>1</Sequence>
+  <Sequences>1</Sequences>
+  <Nodes>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01_cleaned/Raw Data</string>
+  </Nodes>
+  <TIDs>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+  </TIDs>
+  <ReaderID>36e2964e-25a7-1bd2-855e-00a005a0a376</ReaderID>
+  <RegistrationID>00000000-0000-0000-0000-000000000000</RegistrationID>
+  <User>whitf</User>
+  <Computer>DESKTOP-4M5R6P7</Computer>
+</HistoryInfoFile>

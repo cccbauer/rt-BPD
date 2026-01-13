@@ -1,0 +1,100 @@
+{
+    "timestamp": "20250806_161156",
+    "original_file": "../BVAnalyzer/export/sub-rtbpd003_ses-nf2_task_feedback_run-01_cleaned.edf",
+    "original_n_channels": 32,
+    "ecg_removed": [
+        "ECG"
+    ],
+    "bad_channels": [
+        "TP9",
+        "Cz",
+        "POz",
+        "TP10",
+        "T7",
+        "FC5",
+        "C3",
+        "CP1",
+        "F8",
+        "F3",
+        "Fz",
+        "F4",
+        "FC2",
+        "FC6",
+        "FC1",
+        "F7",
+        "CP5",
+        "Fp1",
+        "Fp2",
+        "T8"
+    ],
+    "bad_channel_method": "removed",
+    "final_n_channels": 11,
+    "qc_stats": {
+        "bad_channels": [
+            "TP9",
+            "Cz",
+            "POz",
+            "TP10",
+            "T7",
+            "FC5",
+            "C3",
+            "CP1",
+            "F8",
+            "F3",
+            "Fz",
+            "F4",
+            "FC2",
+            "FC6",
+            "FC1",
+            "F7",
+            "CP5",
+            "Fp1",
+            "Fp2",
+            "T8"
+        ],
+        "good_channels": [
+            "C4",
+            "P3",
+            "P4",
+            "O1",
+            "O2",
+            "P7",
+            "P8",
+            "Pz",
+            "Oz",
+            "CP2",
+            "CP6"
+        ],
+        "mean_snr": -5.296987691384267,
+        "bad_segments_ratio": 0.0046,
+        "variance_reduction": 6.531555297717084,
+        "bad_by_variance": [
+            "Fp1"
+        ],
+        "bad_by_correlation": [
+            "Fp2",
+            "F3",
+            "F4",
+            "C3",
+            "F7",
+            "F8",
+            "T7",
+            "T8",
+            "Fz",
+            "Cz",
+            "FC1",
+            "FC2",
+            "CP1",
+            "FC5",
+            "FC6",
+            "CP5",
+            "TP9",
+            "TP10",
+            "POz"
+        ],
+        "bad_by_powerline": [],
+        "ecg_channels_removed": [
+            "ECG"
+        ]
+    }
+}

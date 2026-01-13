@@ -1,0 +1,64 @@
+{
+    "timestamp": "20250806_161456",
+    "original_file": "../BVAnalyzer/export/sub-rtbpd003_ses-nf2_task_feedback_run-01_cleaned.edf",
+    "original_n_channels": 32,
+    "ecg_removed": [
+        "ECG"
+    ],
+    "bad_channels": [
+        "Fp1",
+        "POz",
+        "Fz"
+    ],
+    "bad_channel_method": "removed",
+    "final_n_channels": 28,
+    "qc_stats": {
+        "bad_channels": [
+            "Fp1",
+            "POz",
+            "Fz"
+        ],
+        "good_channels": [
+            "Fp2",
+            "F3",
+            "F4",
+            "C3",
+            "C4",
+            "P3",
+            "P4",
+            "O1",
+            "O2",
+            "F7",
+            "F8",
+            "T7",
+            "T8",
+            "P7",
+            "P8",
+            "Cz",
+            "Pz",
+            "Oz",
+            "FC1",
+            "FC2",
+            "CP1",
+            "CP2",
+            "FC5",
+            "FC6",
+            "CP5",
+            "CP6",
+            "TP9",
+            "TP10"
+        ],
+        "mean_snr": -5.7689622574136274,
+        "bad_segments_ratio": 0.0128,
+        "variance_reduction": 8.642463180692172,
+        "bad_by_variance": [],
+        "bad_by_correlation": [
+            "Fp1",
+            "Fz"
+        ],
+        "bad_by_powerline": [],
+        "ecg_channels_removed": [
+            "ECG"
+        ]
+    }
+}

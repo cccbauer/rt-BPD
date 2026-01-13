@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<HistoryInfoFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <HeaderFilename>C:\Users\whitf\Documents\GitHub\rt-BPD\analysis\BVAnalyzer\raw\sub-rtbpd003_ses-nf2_task_feedback_run-01.vhdr</HeaderFilename>
+  <RawFilename>C:\Users\whitf\Documents\GitHub\rt-BPD\analysis\BVAnalyzer\raw\sub-rtbpd003_ses-nf2_task_feedback_run-01.eeg</RawFilename>
+  <AppendedFiles />
+  <Sequence>1</Sequence>
+  <Sequences>1</Sequences>
+  <Nodes>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest/ICA</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest/ICA/Inverse ICA</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest/ICA/Inverse ICA/Edit Markers</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest/ICA/Inverse ICA/Edit Markers/Raw Data Inspection</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest/ICA/Inverse ICA/Edit Markers/Raw Data Inspection/PostICA_Edit Markers_EDITTHISSTAGE</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest/ICA/Inverse ICA/Edit Markers/Raw Data Inspection/PostICA_Edit Markers_EDITTHISSTAGE/Matlab Transformation Temp</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest/ICA/Inverse ICA/Edit Markers/Raw Data Inspection/PostICA_Edit Markers_EDITTHISSTAGE/Matlab Transformation Temp/Edit Markers</string>
+    <string>sub-rtbpd003_ses-nf2_task_feedback_run-01/Raw Data/Edit Markers/Scanner Artifact Correction_250Hz/Edit Markers/Data Cache/Pulse Artifact Correction/Pulse Artifact Correction/New analysis - Filters - 0.75 hZ/Raw Data Inspection automatic/Edit Markers/BandRejection - cleanest/ICA/Inverse ICA/Edit Markers/Raw Data Inspection/PostICA_Edit Markers_EDITTHISSTAGE/Matlab Transformation Temp/Edit Markers/Segmentation</string>
+  </Nodes>
+  <TIDs>
+    <guid>00000000-0000-0000-0000-000000000000</guid>
+    <guid>beac38d3-5600-4e63-b062-31bcc4e9e9d1</guid>
+    <guid>ed016de0-8d74-4609-9871-96414e4f7db4</guid>
+    <guid>afc8101a-ff15-40ef-beaa-cbb0ede485b3</guid>
+    <guid>5f3134cf-60b7-47f0-8135-0d5b1b485b93</guid>
+    <guid>4c5e2e04-b009-46f4-b47c-38b28d224f67</guid>
+    <guid>a15fe176-c94a-433c-bcca-860bc54e748a</guid>
+    <guid>5a4fcb32-aa55-498f-aa94-d9d5760cb832</guid>
+    <guid>09c9d9dd-c9ed-45f5-92e9-43d4c846d763</guid>
+    <guid>e67af6f1-ac11-4882-a8d8-751d86d82795</guid>
+    <guid>dc0244b9-27b6-4d8c-a477-dc1ee326250d</guid>
+    <guid>a8a6c6ec-be7a-42cf-be08-dd4dc232c5ac</guid>
+    <guid>5da43706-52e7-4a3e-92a2-e6c0fe6ab683</guid>
+    <guid>e2709904-2439-451e-a02e-65077f1a7da0</guid>
+    <guid>a8b7d4f3-1eda-43d1-bd32-fa9d5953b8c1</guid>
+    <guid>8bbc7bc9-7e6f-47a7-afdd-c5866e834d5a</guid>
+    <guid>8dffa5d3-e475-4f88-8f64-6eea5bf7ba1d</guid>
+    <guid>0051bcaa-7039-49dd-9a8c-31c9bab1cc2d</guid>
+    <guid>cbb15190-009a-4a4e-9492-59f58b7cb19f</guid>
+  </TIDs>
+  <ReaderID>36e2964e-25a7-1bd2-855e-00a005a0a376</ReaderID>
+  <RegistrationID>00000000-0000-0000-0000-000000000000</RegistrationID>
+  <User>whitf</User>
+  <Computer>DESKTOP-4M5R6P7</Computer>
+</HistoryInfoFile>

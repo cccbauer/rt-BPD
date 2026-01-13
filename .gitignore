@@ -1,0 +1,18 @@
+# Ignore the large SIF file
+murfi-rt-PyProject/scripts/murfi2.1.sif
+
+# Ignore all .log files
+*.log
+
+# Ignore a directory
+build/
+
+# Ignore all subject folders in murfi-rt-PyProject/subjects/
+murfi-rt-PyProject/subjects/*/
+# Except the 'template' folder
+!murfi-rt-PyProject/subjects/template/
+
+# Large neuroimaging files
+*.nii
+*.nii.gz
+murfi-rt-PyProject/scripts/img/
